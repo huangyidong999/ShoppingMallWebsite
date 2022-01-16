@@ -12,3 +12,73 @@ ProductList
 (1)"max-width:1013px": the max width. usually it will combine with "margin:10px auto", means top and bot max 10px(居中)
 (2)"float:left" float forward left in css
 (3)in css "opacity" 表示透明程度
+====================================================
+In Jquery
+Carouse:
+(1)"$("div.rightMenu span").mouseenter(function(){
+var left = $(this).position().left;
+var top = $(this).position().top;
+var width = $(this).css("width");
+var destLeft = parseInt(left) + parseInt(width)/2;
+$("img#catear").css("left",destLeft);
+$("img#catear").css("top",top-20);
+$("img#catear").fadeIn(500);
+});"
+1.which  inside $ is to locate the node, at here we are looking the div node which class is 'rightMenu' and its span
+2.'mouseenter' means when our mouse cross the node
+3.'$(this)' means it is a Jquery object and it has position function
+4." $("img#catear").css("left",destLeft) " this is how we change CSS by Jquery, firstly we need to find the css
+node and then we has '.css' function to change it by a key-value form.
+
+Categry:
+(1)" function showProductsAsideCategorys(cid){
+$("div.eachCategory[cid="+cid+"]").css("background-color","white");
+$("div.eachCategory[cid="+cid+"] a").css("color","#87CEFA");
+$("div.productsAsideCategorys[cid="+cid+"]").show();
+}
+
+function hideProductsAsideCategorys(cid){
+$("div.eachCategory[cid="+cid+"]").css("background-color","#e2e2e3");
+$("div.eachCategory[cid="+cid+"] a").css("color","#000");
+$("div.productsAsideCategorys[cid="+cid+"]").hide();
+}
+
+$(function(){
+$("div.productsAsideCategorys div.row a").each(function(){
+var v = Math.round(Math.random() *6);
+if(v == 1)
+$(this).css("color","#87CEFA");
+});
+});
+
+$(function(){
+$("div.eachCategory").mouseenter(function(){
+var cid = $(this).attr("cid");
+showProductsAsideCategorys(cid);
+});
+$("div.eachCategory").mouseleave(function(){
+var cid = $(this).attr("cid");
+hideProductsAsideCategorys(cid);
+});
+$("div.productsAsideCategorys").mouseenter(function(){
+var cid = $(this).attr("cid");
+showProductsAsideCategorys(cid);
+});
+$("div.productsAsideCategorys").mouseleave(function(){
+var cid = $(this).attr("cid");
+hideProductsAsideCategorys(cid);
+});
+});"
+(1)整体思路是：
+1. 把所有的产品列表都隐藏
+2. 当鼠标移动到菜单项上的时候，取出对应的cid
+3. 根据cid，找到对应的产品列表
+4. 显示该产品列表
+5. 当鼠标移开的时候，隐藏对应的产品列表 According to the guid, we can know the first two function are help us to hide and show
+the list, which operate by cid
+(2)$(function()){ ... ...} inside we will write the code which can run after the browser read all needs
+(3) in side the $(function()){...} we can see it get the cid and show the
+"$("div.eachCategory[cid="+cid+"]").css("background-color","#e2e2e3");" at here we get the cid of eeachCategory by cid
+and change the css
+(4)"$("div.productsAsideCategorys[cid="+cid+"]").hide();" then we can change it show or hide
+(5)"$("div.productsAsideCategorys").mouseleave(function(){}", mouseleaver can use when the mouse leave the node
