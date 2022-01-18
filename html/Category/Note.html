@@ -1,0 +1,29 @@
+(1)At Css we have:"div.productUnit img.productImage{
+width: 100%;
+宽度: 100%
+height: 190px;
+高度: 190px
+}" at here we use div.prodctUnit to locate the dic node whose class name is productUnit and below that,
+we need to find the img node which the class name is productImage
+(2) in css, "display: block;" means it will change to another line, because this node we mark is a block already
+,if we want to things inside css in one line, we should use "inline-block"
+
+(3)At javaScript part:
+1."$("input.sortBarPrice").keyup(function(){})"
+at here we need to look at the 'keyup' event means 当按下按键时，改变文本域的颜色：
+注：因为要获取值，所以不能在keypress和keydown事件上做监听，因为这两个事件只能获取到按键点击之前的值。
+
+2."var begin = $("input.beginPrice").val();
+var end = $("input.endPrice").val();" this is way how to get the value of input node and its class name is beginPrice
+and endPrice
+
+3."if(!isNaN(begin) && !isNaN(end)){...}" this is how we do if else in jquery
+
+4."$("div.productUnit").each(function(){
+var price = $(this).attr("price");
+price = new Number(price);
+if(price<=end && price>=begin)
+$(this).show();
+});" this is how we do loop in jquery, $("name").each(function(){})'
+
+5. each $function() should end with ();
