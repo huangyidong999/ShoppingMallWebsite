@@ -1,0 +1,11 @@
+in css:
+1."img
+{
+float:left;
+clear:both;
+}" the 'clear:both' won't allowed right and left side has the float nodes
+
+2. the way how we change img from small to big: for each small img, we have a own class name
+to record the big image path,
+the reason why we use '.load' : 在大图片加载好之后，根据每个小图片的bigImageURL ，创建一个Image对象，然后把这个image对象的src属性，
+设置为bigImageURL。 当这个img对象加载完毕之后，再放到被隐藏的div.img4load中，从而达到预加载的效果。
